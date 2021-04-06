@@ -1,0 +1,13 @@
+.footerContainer {
+  width: 100%;
+  background-color: #052257;
+  color: white;
+  box-sizing: border-box;
+}
+
+#footerRights {
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  box-sizing: border-box;
+}

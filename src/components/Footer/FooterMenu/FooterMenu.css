@@ -1,0 +1,8 @@
+#footerMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px 15px 60px;
+  box-sizing: border-box;
+}
