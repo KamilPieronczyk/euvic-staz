@@ -1,0 +1,38 @@
+.infoBoxContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-right: 100px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .infoBoxContainer {
+    padding-right: 0;
+  }
+}
+
+.infoBoxContainer > figure {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.infoBoxContainer > figure > img {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: 2px solid var(--lightblue);
+  border-radius: 30px;
+}
+
+.infoBoxContainer > figure > p{
+  font-weight: 500;
+  font-size: 14pt;
+}
+
+.infoBoxContainer > h1 {
+  margin-bottom: 0px;
+}
+
+.infoBoxContainer > p {
+  font-size: 14pt;
+}

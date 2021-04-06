@@ -1,15 +1,12 @@
 import React from 'react'
 import './Body.css'
+import {InfoBox} from './InfoBox/InfoBox'
 
 export function Body() {
   return (
     <div className={'bodyContainer'}>
-      Body
-      <p>ss</p>
-      <p>ss</p>
-      <p>ss</p>
-      <p>ss</p>
-      <p>ss</p>
+      <InfoBox />
+      <div style={{flex: 1}}>Right</div>
     </div>
   )
 }
