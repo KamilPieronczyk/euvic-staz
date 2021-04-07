@@ -1,0 +1,50 @@
+.inputContainer {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.formInput {
+  width: 100%;
+  font-size: 14pt;
+  padding: 14pt;
+  margin-top: 10pt;
+  border: 1px solid var(--lightblue);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.formInput:active, .formInput:focus {
+  outline: none;
+  border: 2px solid var(--blue);
+  transition: border-width 0.1s ease-in-out;;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+.invalidIcon {
+  position: absolute;
+  top: 40pt;
+  right: 14pt;
+  margin: 0;
+  padding: 0;
+}
+
+.inputLabel {
+  font-weight: 450;
+  color: grey;
+  margin-top: 10pt;
+}
+
+.inputBottomLabel {
+  color: red;
+  margin: 2px 0 10px 0 !important;
+}
+
+.red {
+  color: red !important;
+}
