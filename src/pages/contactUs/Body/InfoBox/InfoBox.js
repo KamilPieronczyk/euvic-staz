@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './InfoBox.css'
 
 import Fade from 'react-reveal/Fade';
@@ -8,8 +8,10 @@ export function InfoBox() {
     <Fade>
       <section className={"infoBoxContainer"}>
           <figure>
-            <img src="/assets/phone.svg" alt="phoneIcon"/>
-            <p itemProp="telephone"><a href="tel:+18884445555">1-888-444-5555</a></p>
+              <img src="/assets/phone.svg" alt="phoneIcon"/>
+              <p itemProp="telephone">
+                <a href="tel:+18884445555">1-888-444-5555</a>
+              </p>
           </figure>
         <h1>Need assistance?</h1>
         <p>

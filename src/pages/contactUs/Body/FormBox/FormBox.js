@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import './FormBox.css'
 
 import {Input, Button, TextArea} from '../../../../components'
@@ -6,6 +6,7 @@ import {Input, Button, TextArea} from '../../../../components'
 import validator from 'validator'
 import ReCAPTCHA from "react-google-recaptcha";
 import Fade from 'react-reveal/Fade'
+import {PropTypes} from 'prop-types'
 
 const errorMessages = {
   emptyInput: 'This value is required.',
@@ -13,7 +14,7 @@ const errorMessages = {
   tooShort: 'The value is too short, it should contains at least 6 letters'
 }
 
-export function FormBox() {
+function FormBox(props) {
   const [email, setEmail] = useState("")
   const [subject, setSubject] = useState("")
   const [comment, setComment] = useState("")
@@ -22,19 +23,10 @@ export function FormBox() {
   const [commentValidation, setCommentValidation] = useState({isValid: true, errorMessage: ""})
   const [captcha, setCaptcha] = useState(true)
   const [isFormValid, setIsFormValid] = useState(true)
+  const [hideForm, setHideForm] = useState(false)
   const captchaRef = useRef()
 
-  useEffect(() => {
-    checkFieldsValidation()
-  }, [email, subject, comment, emailValidation, subjectValidation, commentValidation])
-
-  const validateForm = () => {
-    return validateEmail() &&
-    validateText(subject, setSubjectValidation) &&
-    validateText(comment, setCommentValidation)
-  }
-
-  const checkFieldsValidation = () => {
+  const checkFieldsValidation = useCallback(() => {
     if(emailValidation.isValid &&
       subjectValidation.isValid &&
       commentValidation.isValid
@@ -42,6 +34,17 @@ export function FormBox() {
       setIsFormValid(true)
     else
       setIsFormValid(false)
+  }, [emailValidation, subjectValidation, commentValidation]
+)
+
+  useEffect(() => {
+    checkFieldsValidation()
+  }, [email, subject, comment, emailValidation, subjectValidation, commentValidation, checkFieldsValidation])
+
+  const validateForm = () => {
+    return validateEmail() &&
+    validateText(subject, setSubjectValidation) &&
+    validateText(comment, setCommentValidation)
   }
 
   const validateEmail = () => {
@@ -103,61 +106,78 @@ export function FormBox() {
     onCaptchaChange(captchaRef.current.getValue())
     if(!captcha) return
     if(isFormValid) {
-      console.log('send')
+      setHideForm(true)
+      setTimeout(() => {
+        props.onFormSubmit()
+      }, 500)
     }
   }
 
   return (
-    <section className={"formBoxContainer"}>
+    <Fade when={!hideForm}>
+      <section className={"formBoxContainer"}>
+        <form className={"formBoxContainer"}>
 
-      <h1>Email Us</h1>
+          <h1>Email Us</h1>
 
-      <Input
-        label="Email"
-        type={"email"}
-        placeholder="Enter your email"
-        isValid={emailValidation.isValid}
-        errorMessage={emailValidation.errorMessage}
-        onChange={setEmail}
-        onBlur={()=>validateEmail(email)}
-        onFocus={()=>clearErrorMessage(setEmailValidation)}
-      />
+          <Input
+            label="Email"
+            type={"email"}
+            placeholder="Enter your email"
+            isValid={emailValidation.isValid}
+            errorMessage={emailValidation.errorMessage}
+            onChange={setEmail}
+            onBlur={()=>validateEmail(email)}
+            onFocus={()=>clearErrorMessage(setEmailValidation)}
+          />
 
-      <Input
-        label="Subject"
-        type={"text"}
-        placeholder="Enter subject"
-        isValid={subjectValidation.isValid}
-        errorMessage={subjectValidation.errorMessage}
-        onChange={setSubject}
-        onBlur={()=>validateText(subject, setSubjectValidation)}
-        onFocus={()=>clearErrorMessage(setSubjectValidation)}
-      />
+          <Input
+            label="Subject"
+            type={"text"}
+            placeholder="Enter subject"
+            isValid={subjectValidation.isValid}
+            errorMessage={subjectValidation.errorMessage}
+            onChange={setSubject}
+            onBlur={()=>validateText(subject, setSubjectValidation)}
+            onFocus={()=>clearErrorMessage(setSubjectValidation)}
+          />
 
-      <TextArea
-        label="Comment"
-        placeholder="Write your comment"
-        isValid={commentValidation.isValid}
-        errorMessage={commentValidation.errorMessage}
-        onChange={setComment}
-        onBlur={()=>validateText(comment, setCommentValidation)}
-        onFocus={()=>clearErrorMessage(setCommentValidation)}
-      />
+          <TextArea
+            label="Comment"
+            placeholder="Write your comment"
+            isValid={commentValidation.isValid}
+            errorMessage={commentValidation.errorMessage}
+            onChange={setComment}
+            onBlur={()=>validateText(comment, setCommentValidation)}
+            onFocus={()=>clearErrorMessage(setCommentValidation)}
+          />
 
-      <ReCAPTCHA
-        sitekey={"6LfWh6AaAAAAAJUjyAifJPbBL3XHMlfg2txTJiA7"}
-        onChange={onCaptchaChange}
-        ref={captchaRef}
-      />
+          <ReCAPTCHA
+            sitekey={"6LfWh6AaAAAAAJUjyAifJPbBL3XHMlfg2txTJiA7"}
+            onChange={onCaptchaChange}
+            ref={captchaRef}
+          />
 
-      {captcha ? null : (
-        <Fade>
-          <span className={"red"}>{errorMessages.emptyInput}</span>
-        </Fade>
-      )}
+          {captcha ? null : (
+            <Fade>
+              <span className={"red"}>{errorMessages.emptyInput}</span>
+            </Fade>
+          )}
 
-      <Button disabled={!isFormValid} onClick={onSubmit} />
+          <Button disabled={!isFormValid} onClick={onSubmit} />
 
-    </section>
+        </form>
+      </section>
+    </Fade>
   )
 }
+
+FormBox.propTypes = {
+  onFormSubmit: PropTypes.func
+}
+
+FormBox.defaultProps = {
+  onFormSubmit: () => {}
+}
+
+export {FormBox}

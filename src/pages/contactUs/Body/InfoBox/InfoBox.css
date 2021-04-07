@@ -16,7 +16,7 @@
   margin-bottom: 0;
 }
 
-.infoBoxContainer > figure > img {
+.infoBoxContainer > figure img {
   width: 40px;
   height: 40px;
   padding: 10px;
@@ -24,9 +24,10 @@
   border-radius: 30px;
 }
 
-.infoBoxContainer > figure > p{
+.infoBoxContainer > figure p{
   font-weight: 500;
   font-size: 14pt;
+  margin-top: 2pt;
 }
 
 .infoBoxContainer > h1 {
