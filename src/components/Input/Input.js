@@ -21,6 +21,8 @@ function Input(props) {
         value={value}
         placeholder={props.placeholder}
         onChange={inputHandle}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
       />
 
       {
@@ -51,13 +53,17 @@ Input.propTypes = {
   type: PropTypes.oneOf(['email', 'text']),
   placeholder: PropTypes.string,
   label: PropTypes.string,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func
 }
 
 Input.defaultProps = {
   isValid: true,
   type: 'text',
   onChange: () => {},
+  onBlur: () => {},
+  onFocus: () => {}
 }
 
 export {Input};

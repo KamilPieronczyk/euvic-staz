@@ -20,6 +20,8 @@ function TextArea(props) {
         value={value}
         placeholder={props.placeholder}
         onChange={inputHandle}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
       />
 
       {
@@ -49,13 +51,17 @@ TextArea.propTypes = {
   isValid: PropTypes.bool,
   placeholder: PropTypes.string,
   label: PropTypes.string,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func
 }
 
 TextArea.defaultProps = {
   isValid: true,
   type: 'text',
   onChange: () => {},
+  onBlur: () => {},
+  onFocus: () => {}
 }
 
 export {TextArea};
