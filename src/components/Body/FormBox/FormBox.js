@@ -2,6 +2,7 @@ import React from 'react'
 import './FormBox.css'
 
 import {Input} from '../../Input/Input'
+import {TextArea} from '../../TextArea/TextArea'
 
 export function FormBox() {
   return (
@@ -18,6 +19,12 @@ export function FormBox() {
         label="Subject"
         type={"text"}
         placeholder="Enter subject"
+        isValid={true}
+        errorMessage="This value is required"
+      />
+      <TextArea
+        label="Comment"
+        placeholder="Write your comment"
         isValid={true}
         errorMessage="This value is required"
       />

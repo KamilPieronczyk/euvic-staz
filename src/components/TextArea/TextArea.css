@@ -1,0 +1,12 @@
+.textArea {
+  width: 100%;
+  font-size: 14pt;
+  padding: 14pt;
+  margin-top: 10pt;
+  border: 1px solid var(--lightblue);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+  resize: vertical;
+  min-height: 180px;
+}
