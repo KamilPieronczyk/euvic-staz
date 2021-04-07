@@ -1,0 +1,12 @@
+.spinnerContainer {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spinnerContainer > span {
+  padding-top: 20px;
+}

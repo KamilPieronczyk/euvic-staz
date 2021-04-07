@@ -1,6 +1,7 @@
 import React from 'react'
 
-import {Header, Footer, Body} from '../../components'
+import {Header, Footer} from '../../components'
+import {Body} from './Body/Body'
 
 export function ContactUs() {
   return (

@@ -10,3 +10,9 @@
   resize: vertical;
   min-height: 180px;
 }
+
+.textArea:active, .textArea:focus {
+  outline: none;
+  border: 2px solid var(--blue);
+  transition: border-width 0.1s ease-in-out;;
+}

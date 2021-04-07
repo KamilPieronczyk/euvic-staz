@@ -1,0 +1,21 @@
+.finalMessageContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.finalMessageContainer img {
+  width: 60px;
+  height: 60px;
+}
+
+.finalMessageContainer h3 {
+  margin-top: 10px;
+  margin-bottom: 0;
+} 
+
+.finalMessageContainer p {
+  font-size: 14pt;
+}

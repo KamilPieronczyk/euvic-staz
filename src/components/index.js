@@ -1,7 +1,7 @@
 import {Header} from './Header/Header'
 import {Footer} from './Footer/Footer'
-import {Body} from './Body/Body'
 import {Input} from './Input/Input'
 import {TextArea} from './TextArea/TextArea'
+import {Button} from './Button/Button'
 
-export {Header, Footer, Body, Input, TextArea}
+export {Header, Footer, Input, TextArea, Button}
