@@ -3,6 +3,8 @@ import './FormBox.css'
 
 import {Input} from '../../Input/Input'
 import {TextArea} from '../../TextArea/TextArea'
+import {Button} from '../../Button/Button'
+
 
 export function FormBox() {
   return (
@@ -28,6 +30,7 @@ export function FormBox() {
         isValid={true}
         errorMessage="This value is required"
       />
+      <Button />
     </section>
   )
 }
