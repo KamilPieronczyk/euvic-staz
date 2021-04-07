@@ -9,7 +9,7 @@ export function InfoBox() {
       <section className={"infoBoxContainer"}>
           <figure>
             <img src="/assets/phone.svg" alt="phoneIcon"/>
-            <p itemProp="telephone">1-888-444-5555</p>
+            <p itemProp="telephone"><a href="tel:+18884445555">1-888-444-5555</a></p>
           </figure>
         <h1>Need assistance?</h1>
         <p>

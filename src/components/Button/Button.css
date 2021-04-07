@@ -8,6 +8,7 @@
   cursor: pointer;
   align-self: center;
   transition: box-shadow .2s ease-in;
+  margin-top: 6pt;
 }
 
 .buttonContainer:hover {

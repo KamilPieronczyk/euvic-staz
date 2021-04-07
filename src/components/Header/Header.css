@@ -35,3 +35,27 @@
   width: 1.2em;
   display: inline-block;
 }
+
+.headerContainer a {
+  text-decoration: none;
+}
+
+.headerContainer a:hover {
+  text-decoration: none;
+  color: #2477CB;
+}
+
+.headerContainer a:active {
+  text-decoration: none;
+  color: #2477CB;
+}
+
+.headerContainer a:visited {
+  text-decoration: none;
+  color: #2477CB;
+}
+
+.headerContainer a:link {
+  text-decoration: none;
+  color: #2477CB;
+}

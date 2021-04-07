@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './FormBox.css'
 
 import {Input, Button, TextArea} from '../../../../components'
+
 import validator from 'validator'
+import ReCAPTCHA from "react-google-recaptcha";
+import Fade from 'react-reveal/Fade'
 
 const errorMessages = {
   emptyInput: 'This value is required.',
@@ -17,7 +20,9 @@ export function FormBox() {
   const [emailValidation, setEmailValidation] = useState({isValid: true, errorMessage: ""})
   const [subjectValidation, setSubjectValidation] = useState({isValid: true, errorMessage: ""})
   const [commentValidation, setCommentValidation] = useState({isValid: true, errorMessage: ""})
+  const [captcha, setCaptcha] = useState(true)
   const [isFormValid, setIsFormValid] = useState(true)
+  const captchaRef = useRef()
 
   useEffect(() => {
     checkFieldsValidation()
@@ -84,11 +89,21 @@ export function FormBox() {
 
   const clearErrorMessage = (setValidation) => setValidation({isValid: true, errorMessage: ''})
 
+  const onCaptchaChange = (captcha) => {
+
+    if(captcha.length > 0) //not correct, temporary solution
+      setCaptcha(true)
+    else
+      setCaptcha(false)
+  }
+
   const onSubmit = () => {
     if(!validateForm()) return
     checkFieldsValidation()
+    onCaptchaChange(captchaRef.current.getValue())
+    if(!captcha) return
     if(isFormValid) {
-      
+      console.log('send')
     }
   }
 
@@ -128,6 +143,18 @@ export function FormBox() {
         onBlur={()=>validateText(comment, setCommentValidation)}
         onFocus={()=>clearErrorMessage(setCommentValidation)}
       />
+
+      <ReCAPTCHA
+        sitekey={"6LfWh6AaAAAAAJUjyAifJPbBL3XHMlfg2txTJiA7"}
+        onChange={onCaptchaChange}
+        ref={captchaRef}
+      />
+
+      {captcha ? null : (
+        <Fade>
+          <span className={"red"}>{errorMessages.emptyInput}</span>
+        </Fade>
+      )}
 
       <Button disabled={!isFormValid} onClick={onSubmit} />
 

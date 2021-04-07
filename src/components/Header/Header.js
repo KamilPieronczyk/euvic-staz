@@ -8,7 +8,7 @@ export function Header() {
       <div>
         <span>call us</span>
         <span className={"spacer"}></span>
-        <span itemProp="telephone">1-888-444-5555</span>
+        <span itemProp="telephone"><a href="tel:+1888444555">1-888-444-5555</a></span>
       </div>
     </header>
   )
