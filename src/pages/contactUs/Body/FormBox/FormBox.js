@@ -24,6 +24,7 @@ function FormBox(props) {
   const [captcha, setCaptcha] = useState(true)
   const [isFormValid, setIsFormValid] = useState(true)
   const [hideForm, setHideForm] = useState(false)
+  const [disableSendButton, setDisableSendButton] = useState(false)
   const captchaRef = useRef()
 
   const checkFieldsValidation = useCallback(() => {
@@ -106,9 +107,10 @@ function FormBox(props) {
     onCaptchaChange(captchaRef.current.getValue())
     if(!captcha) return
     if(isFormValid) {
+      setDisableSendButton(true)
       setHideForm(true)
       setTimeout(() => {
-        props.onFormSubmit()
+        props.onFormSubmit(email, subject, comment)
       }, 500)
     }
   }
@@ -164,7 +166,7 @@ function FormBox(props) {
             </Fade>
           )}
 
-          <Button disabled={!isFormValid} onClick={onSubmit} />
+          <Button disabled={!isFormValid && !disableSendButton} onClick={onSubmit}>Send</Button>
 
         </form>
       </section>

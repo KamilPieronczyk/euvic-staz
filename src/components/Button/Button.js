@@ -11,7 +11,7 @@ function Button(props) {
       className={"buttonContainer " + (disabled ? 'buttonDisabled' : '')}
       onClick={!disabled ? props.onClick : ()=>{}}
     >
-      Send
+      {props.children}
     </div>
   )
 }

@@ -7,3 +7,26 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+#footerMenu > div {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#footerMenu a,
+#footerMenu a:hover,
+#footerMenu a:link,
+#footerMenu a:active,
+#footerMenu a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+.mr-5 {
+  margin-right: 10pt;
+}

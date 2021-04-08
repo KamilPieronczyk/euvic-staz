@@ -2,9 +2,10 @@ import React from 'react'
 import './FinalMessage.css'
 import {PropTypes} from 'prop-types'
 import Fade from 'react-reveal/Fade'
+import { Button } from '../../../../components'
 
 function FinalMessage(props) {
-  const { success } = props
+  const { success, goBack } = props
 
   if (success)
     return (
@@ -23,6 +24,7 @@ function FinalMessage(props) {
         <img src="/assets/warningIcon.png" alt="error"/>
         <h3>Ups!</h3>
         <p>Something went wrong, please try again later</p>
+        <Button onClick={goBack}>Back</Button>
       </div>
     </Fade>
   )
@@ -30,10 +32,12 @@ function FinalMessage(props) {
 
 FinalMessage.propTypes = {
   success: PropTypes.bool,
+  goBack: PropTypes.func
 }
 
 FinalMessage.defaultProps = {
-  success: false
+  success: false,
+  goBack: () => {}
 }
 
 export {FinalMessage}
