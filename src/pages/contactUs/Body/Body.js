@@ -7,6 +7,11 @@ import {FinalMessage} from './FinalMessage/FinalMessage'
 
 import axios from 'axios'
 
+const API = {
+  success: "https://drl75hzgm7.api.quickmocker.com/success",
+  error: "https://drl75hzgm7.api.quickmocker.com/error",
+}
+
 export function Body() {
   const [formState, setFormState] = useState("filling")
 
@@ -27,13 +32,23 @@ export function Body() {
 
   const onFormSubmit = (email, subject, comment) => {
     setFormState('loading')
+
     const data = {email, subject, comment}
-    axios.post('https://reqbin.com/echo/post/form', data)
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true
+    }
+
+    //API.error returns an error from an api
+    //axios.post(API.error, {headers, data})
+    axios.post(API.success, {headers, data})
       .then(response => {
         setFormState('success')
+        console.info('response', response)
       })
       .catch(error => {
         setFormState('error')
+        console.error('error', error)
       })
   }
 

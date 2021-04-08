@@ -21,7 +21,7 @@ function FinalMessage(props) {
   return (
     <Fade>
       <div className={"finalMessageContainer"}>
-        <img src="/assets/warningIcon.png" alt="error"/>
+        <img src="/assets/bigWarning.png" alt="error"/>
         <h3>Ups!</h3>
         <p>Something went wrong, please try again later</p>
         <Button onClick={goBack}>Back</Button>

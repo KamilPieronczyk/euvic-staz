@@ -94,8 +94,7 @@ function FormBox(props) {
   const clearErrorMessage = (setValidation) => setValidation({isValid: true, errorMessage: ''})
 
   const onCaptchaChange = (captcha) => {
-
-    if(captcha.length > 0) //not correct, temporary solution
+    if(captcha.length > 0) //not correct, temporary solution, need server to verify token
       setCaptcha(true)
     else
       setCaptcha(false)
