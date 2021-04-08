@@ -5,7 +5,7 @@
   padding-right: 100px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
   .infoBoxContainer {
     padding-right: 0;
   }

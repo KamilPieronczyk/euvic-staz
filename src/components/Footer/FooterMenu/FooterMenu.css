@@ -8,6 +8,18 @@
   box-sizing: border-box;
 }
 
+@media only screen and (max-width: 600px) {
+  #footerMenu {
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 20px 15px 20px;
+  }
+
+  #footerMenu > div {
+    margin-bottom: 10pt;
+  }
+}
+
 #footerMenu > div {
   width: 100%;
   display: flex;
