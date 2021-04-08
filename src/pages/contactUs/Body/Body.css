@@ -8,7 +8,7 @@
   padding: 80px 100px 0 100px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
   .bodyContainer {
     flex-direction: column;
     justify-content: center;
